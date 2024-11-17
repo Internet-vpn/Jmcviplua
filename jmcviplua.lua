@@ -1,5 +1,6 @@
 gg.setVisible(false)
--- Ocultar
+-- Ocultar GG
+
 function NBM(Lib,Offset, EditHex)
 local nbm = gg
 local t = nbm.getRangesList(Lib)
