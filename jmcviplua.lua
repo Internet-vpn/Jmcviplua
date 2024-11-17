@@ -1,7 +1,7 @@
 gg.setVisible(false)
 -- Ocultar GGgg.setConfig(2131427463, 2|4)
 -- Bypass
-gg.setConfig(131427464, 1)
+gg.setConfig(2131427464, 1)
 --libofset
 function NBM(Lib,Offset, EditHex)
 local nbm = gg
