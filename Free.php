@@ -74,7 +74,7 @@ function LOGIN()
 
 if ReadUser(gg.EXT_STORAGE .. "/Android/.UserConfigNew") ~= nil and string.len(ReadUser(gg.EXT_STORAGE .. "/Android/.UserConfigNew"))  > 2 then
 
-local Dialog = gg.alert("Anteriormente Has Iniciado Seción En Este Dispositivo!\n\n¿Desea Continuar?","Continuar ✔️","Cerrar Cuenta ✖️")
+local Dialog = gg.alert("Anteriormente Has Iniciado Seción En Este Dispositivo!\n\n¿Desea Continuar?","Continuar ✔️")
 
 if not Dialog then return end
 
