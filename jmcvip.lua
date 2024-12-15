@@ -236,27 +236,19 @@ end
 
 function menusafe()
 menus = gg.multiChoice({
-"📶 𝐀𝐍𝐓𝐄𝐍𝐀𝐒 NEW",    
-"🏥 𝐒𝐏𝐄𝐄𝐃 𝐇𝐀𝐂𝐊 NEW",    
-"🔥 𝐑𝐄𝐆𝐄𝐃𝐈𝐓𝐒 NEW",     
-"🎯𝐀𝐈𝐌𝐁𝐎𝐓 𝐀𝐖𝐌 NEW",     
-"🔄 𝐂𝐀𝐌𝐁𝐈𝐎 𝐑𝐀𝐏𝐈𝐃𝐎 NEW",    
-"🚶𝐀𝐔𝐌𝐄𝐍𝐓𝐀𝐑 𝐃𝐀𝐍𝐎",    
-"♻️𝑨𝑴𝑷𝑳𝑰𝑨𝑹 𝑪𝑨𝑹𝑮𝑨𝑫𝑶𝑹",    
-"🎯𝑵𝑶 𝑹𝑬𝑪𝑶𝑰𝑳",    
-"⚠️𝐁𝐘𝐏𝐀𝐒𝐒 𝐀𝐍𝐓𝐈 𝐂𝐇𝐄𝐀𝐓⚠️",    
+"📶 𝐀𝐍𝐓𝐄𝐍𝐀 ",     
+"🔥 𝐑𝐄𝐆𝐄𝐃𝐈𝐓 ",      
+"📥𝑨𝑴𝑷𝑳𝑰𝑨𝑹 𝑪𝑨𝑹𝑮𝑨𝑫𝑶𝑹",    
+"➖𝑵𝑶 𝑹𝑬𝑪𝑶𝑰𝑳",    
+"🎯𝐀𝐈𝐌𝐁𝐎𝐓 𝐀𝐖𝐌 (test)",     
 "◀ 𝐀𝐭𝐫𝐚𝐬"},nil,"✨️ 𝐒𝐂𝐑𝐈𝐏𝐓 𝐕𝐈𝐏 ✨️")    
 if menus == nil then else
 if menus [1] ==true then antenas() end
-if menus [2] ==true then curar() end
 if menus [3] ==true then reg() end
+if menus [5] ==true then ampliar() end
+if menus [6] ==true then lag() end
 if menus [4] ==true then awm() end
-if menus [5] ==true then Awm1() end
-if menus [6] ==true then au() end
-if menus [7] ==true then ampliar() end
-if menus [8] ==true then lag() end
-if menus [9] ==true then report() end
-if menus [10] ==true then START() end
+if menus [7] ==true then START() end
 end
 XGCK= -1
 end
@@ -286,15 +278,6 @@ gg.clearResults(gg.getResultsCount())
 gg.toast("𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎 📡")    
 end
 
-function curar()
-  gg.setRanges(gg.REGION_ANONYMOUS)
-gg.searchNumber("2.80259693e-44F;1.20000004768F;0.18000000715F;1.40129846e-45F",     gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-gg.refineNumber("1.20000004768",     gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
-gg.getResults(500, nil, nil, nil, nil, nil, nil, nil, nil)
-gg.editAll("20.780",     gg.TYPE_FLOAT)
-gg.clearResults()
-gg.toast("SPEED RUN X3 ON")    
-end
 
 function reg()
 menureg = gg.choice({
@@ -315,32 +298,6 @@ gg.toast("𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎 🔥")
 end
 
 
-function awm()
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 FF FF 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Reemplazo realizado ᴏɴ✔️️")    
-end 
-
-
-function Awm1()
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 00 00 00 3F 00 00 80 3E 00 00 00 00 05 00 00 00 00 00 80 3F 00 00 20 41 00 00 34 42 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3F 33 33 33 3F 9A 99 99 3F 00 00 80 3F 00 00 00 00 00 00 80 3F CD CC 4C 3F 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00 3F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 80 3F 00 00 80 3F",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 00 00 00 0A 00 00 80 0C",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Ultra Switch activado ᴏɴ✔️️")    
-end
-
-function au()
-gg.searchNumber("00r;00r;B0r;40r;00r;00r;80r;3Fr;00r;00r;40r;3Fr::12",     1)
-gg.getResults(12)
-gg.editAll("00r;00r;B8r;40r;00r;00r;A0r;3Fr;00r;00r;80r;3Fr",     1)
-gg.clearResults()
-gg.toast(" ACTIVADO😇 ")    
-end
 
 function lag()
 gg.loadResults(Recoil)
@@ -445,61 +402,15 @@ gg.editAll("26",     gg.TYPE_DWORD) -- 16
 gg.clearResults(true)
 gg.toast("ACTIVADO 📥")    
 end
+function awm()
+gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
+gg.searchNumber("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01",     gg.TYPE_BYTE)
+gg.getResults(100)
+gg.editAll("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 FF FF 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01",     gg.TYPE_BYTE)
+gg.clearResults()
+gg.toast("Reemplazo realizado ᴏɴ✔️️")    
+end 
 
-function report()
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 B0 01 CD E1")    
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 90 00 9F E5",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Bypass 9 ᴏɴ✔️️")    --safe
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 02",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Bypass 4 ᴏɴ✔️️")    --safe
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 03",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Bypass 3 ᴏɴ✔️️")    --safe
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h F6 0D EA",     gg.TYPE_BYTE)
-gg.getResults(100)  --safe
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Bypass 1 ᴏɴ✔️️")    
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 B0 01 CD E1")    
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 90 00 9F E5",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Bypass 9 ᴏɴ✔️️")    --safe
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 02",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Bypass 4 ᴏɴ✔️️")    --safe
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 0A 00 A0 E3 03",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Bypass 3 ᴏɴ✔️️")    --safe
-end
 
 
 function exit()
