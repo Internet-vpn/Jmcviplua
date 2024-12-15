@@ -244,11 +244,11 @@ menus = gg.multiChoice({
 "◀ 𝐀𝐭𝐫𝐚𝐬"},nil,"✨️ 𝐒𝐂𝐑𝐈𝐏𝐓 𝐕𝐈𝐏 ✨️")    
 if menus == nil then else
 if menus [1] ==true then antenas() end
-if menus [3] ==true then reg() end
-if menus [5] ==true then ampliar() end
-if menus [6] ==true then lag() end
-if menus [4] ==true then awm() end
-if menus [7] ==true then START() end
+if menus [2] ==true then reg() end
+if menus [3] ==true then ampliar() end
+if menus [4] ==true then lago() end
+if menus [5] ==true then awm() end
+if menus [6] ==true then START() end
 end
 XGCK= -1
 end
@@ -281,7 +281,7 @@ end
 
 function reg()
 menureg = gg.choice({
-"🔥 ƦƠ𝐒ЄƝƊƠ 𝐕𝐄𝐑𝐒𝐈𝐎́𝐍 #1",     
+"🔥  𝐕𝐄𝐑𝐒𝐈𝐎𝐍 #1",     
 "◀ 𝐀𝐭𝐫𝐚́𝐬"},nil,"▶ 𝐄𝐋𝐈𝐉𝐄 𝐓𝐔 𝐑𝐄𝐆𝐄𝐃𝐈𝐓 𝐅𝐀𝐕𝐎𝐑𝐈𝐓𝐎:")    
 if menureg == 1 then v1() end
 if menureg == 6 then menusafe() end
@@ -295,16 +295,6 @@ gg.getResults(gg.getResultsCount())
 gg.editAll("25;45;60;80",     16)
 gg.clearResults(gg.getResultsCount())
 gg.toast("𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎 🔥")    
-end
-
-
-
-function lag()
-gg.loadResults(Recoil)
-gg.getResults(gg.getResultsCount())
-gg.editAll("2",     gg.TYPE_FLOAT) 
-gg.clearResults(true)
-gg.toast("ACTIVADO ➖")    
 end
 
 function ampliar()
@@ -402,6 +392,15 @@ gg.editAll("26",     gg.TYPE_DWORD) -- 16
 gg.clearResults(true)
 gg.toast("ACTIVADO 📥")    
 end
+
+function lago()
+gg.loadResults(Recoil)
+gg.getResults(gg.getResultsCount())
+gg.editAll("2",     gg.TYPE_FLOAT) 
+gg.clearResults(true)
+gg.toast("ACTIVADO ➖")    
+end
+
 function awm()
 gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
 gg.searchNumber("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01",     gg.TYPE_BYTE)
