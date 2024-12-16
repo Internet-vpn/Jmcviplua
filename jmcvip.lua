@@ -5,12 +5,12 @@ for l , I in pairs(keys) do
 if main[1] == I then A = true end
 end
 if A ~= true then gg.alert("⚠ Error Password⚠ ") return else gg.toast("✅ Correct Password !") end
-
 gg.setVisible(false)
--- Ocultar
-function ROSENDO(Lib,Offset, EditHex)
-local rosendo = gg
-local t = rosendo.getRangesList(Lib)
+
+--liboffset
+function NBM(Lib,Offset, EditHex)
+local nbm = gg
+local t = nbm.getRangesList(Lib)
 if #t == 0 then 
 return os.exit()
 else 
@@ -31,14 +31,14 @@ end
 return Lua 
 end
 Byte = {} 
-EditHex:gsub("..",     function(x) 
+EditHex:gsub("..", function(x) 
 Byte[#Byte + 1] = x Code[#Byte] = {address = (Offset - 1) + #Byte, flags = gg.TYPE_BYTE, value = x .. "h"}
 end)
 gg.setValues(Code)
 end
 end
 end
-gg.toast("𝐂𝐚𝐫𝐠𝐚𝐧𝐝𝐨 𝐒𝐜𝐫𝐢𝐩𝐭 ⏳")    
+gg.toast("Cargando Script ⏳")
 function CheckProcess()
 local Regions = gg.getRangesList()
 local LastAddress = Regions[#Regions]["end"]
@@ -62,18 +62,18 @@ break
 end
 end
 if #ClassName == 0 then
-print("𝐒𝐢𝐧 𝐑𝐞𝐬𝐮𝐥𝐭𝐚𝐝𝐨𝐬 𝐄𝐧𝐜𝐨𝐧𝐭𝐫𝐚𝐝𝐨𝐬... 𝐏𝐨𝐫 𝐅𝐚𝐯𝐨𝐫 𝐀𝐜𝐭𝐢𝐯𝐚𝐫 𝐃𝐞𝐧𝐭𝐫𝐨 𝐃𝐞𝐥 𝐉𝐮𝐞𝐠𝐨.")    
+print("Sin Resultados Encontrados... Por Favor Activar Dentro Del Juego.")
 os.exit()
 end
 return ClassName
 end
-local x64 = CheckProcess()
 local MyOffset = ""
-function SearchClassName(Text, Offset64, Offset32, Type)
+local x64 = CheckProcess()
+function SearchClassName(Text, Offset, Type)
 gg.clearResults(true)
 gg.clearList()
 gg.setRanges(gg.REGION_C_ALLOC | gg.REGION_OTHER)
-local Metadata = gg.getRangesList("global-metadata.dat")    
+local Metadata = gg.getRangesList("global-metadata.dat")
 if Metadata == nil then
 Region_Start = Metadata[1]["start"] and gg.TYPE_DWORD
 Region_End = Metadata[1]["end"]
@@ -106,13 +106,10 @@ break
 end
 end
 if #Resultss == 0 then
-print("𝐒𝐢𝐧 𝐑𝐞𝐬𝐮𝐥𝐭𝐚𝐝𝐨𝐬 𝐄𝐧𝐜𝐨𝐧𝐭𝐫𝐚𝐝𝐨𝐬... 𝐏𝐨𝐫 𝐅𝐚𝐯𝐨𝐫 𝐀𝐜𝐭𝐢𝐯𝐚𝐫 𝐃𝐞𝐧𝐭𝐫𝐨 𝐃𝐞𝐥 𝐉𝐮𝐞𝐠𝐨.")    
+print("Sin Resultados Encontrados... Por Favor Activar Dentro Del Juego.")
 os.exit()
 end
-if x64 == true then 
-MyOffset = MyOffset .. Offset64
-else MyOffset = MyOffset .. Offset32
-end
+MyOffset = MyOffset .. Offset
 gg.addListItems(Resultss)
 gg.clearResults()
 local GetResultsFromSearch = {}
@@ -126,12 +123,22 @@ GetResultsFromSearch = gg.getValues(GetResultsFromSearch)
 gg.loadResults(GetResultsFromSearch)
 gg.clearList()
 end
-SearchClassName("OOIPMACFIFL",    "0x134",     "0xF0",     gg.TYPE_DWORD)
+if gg.getTargetPackage() == "com.dts.freefireth" then
+SearchClassName("OOIPMACFIFL","0x134", gg.TYPE_DWORD)
+Guest = "0x554E3AC"; Female = "0x4318E38"
+FF = "FF-1.106"
+elseif gg.getTargetPackage() == "com.dts.freefiremax" then 
+SearchClassName("OOIPMACFIFL","0x14C", gg.TYPE_DWORD)
+Guest = "0x5623104"; Female = "0x437C7B8"
+FF = "FF-MAX-2.106"
+else gg.alert("No se encuentran datos del juego, por favor ejecute el script después de abrir el juego.") 
+os.exit() gg = nil 
+end
 local AllResults = gg.getResults(gg.getResultsCount())
-local C30, C20, C7, C4, C5, C15, C12, C6, C2, C8, C3, C50, C42, C100, C10, C35, C22, C80, C60, C18, C25, C9, C16 = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
+local C1, C17, C30, C20, C7, C4, C5, C15, C6, C2, C8, C3, C50, C42, C100, C10, C35, C22, C80, C60, C18, C25, C9, C16 = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
 local Recoil = {}
 for Number, Value in ipairs(AllResults) do
-if Value.value == 30 or Value.value == 20 or Value.value == 7 or Value.value == 4 or Value.value == 5 or Value.value == 12 or Value.value == 6 or Value.value == 2 or Value.value == 8 or Value.value == 3 or Value.value == 50 or Value.value == 42 or Value.value == 100 or Value.value == 10 or Value.value == 35 or Value.value == 22 or Value.value == 80 or Value.value == 60 or Value.value == 18 or Value.value == 25 then 
+if Value.value == 1 or Value.value == 17 or Value.value == 30 or Value.value == 20 or Value.value == 7 or Value.value == 4 or Value.value == 5 or Value.value == 6 or Value.value == 2 or Value.value == 8 or Value.value == 3 or Value.value == 50 or Value.value == 42 or Value.value == 100 or Value.value == 10 or Value.value == 35 or Value.value == 22 or Value.value == 80 or Value.value == 60 or Value.value == 18 or Value.value == 25 then 
 Valueee = gg.getValues({{address = Value.address+8, flags = gg.TYPE_FLOAT}})
 for i, v in pairs(Valueee) do
 Valueee2 = gg.getValues({{address = v.address+8, flags = gg.TYPE_FLOAT}})
@@ -139,6 +146,12 @@ for b, c in pairs(Valueee2) do
 if v.value == c.value then
 Recoil[#Recoil +1] = {address = Value.address+8, flags = gg.TYPE_FLOAT}
 end;end;end;end
+if Value.value == 1 then
+C1[#C1+1] = {address = Value.address, flags = Value.flags}
+end
+if Value.value == 17 then
+C17[#C17+1] = {address = Value.address, flags = Value.flags}
+end
 if Value.value == 30 then
 C30[#C30+1] = {address = Value.address, flags = Value.flags}
 end
@@ -156,9 +169,6 @@ C5[#C5+1] = {address = Value.address, flags = Value.flags}
 end
 if Value.value == 15 then
 C15[#C15+1] = {address = Value.address, flags = Value.flags}
-end
-if Value.value == 12 then
-C12[#C12+1] = {address = Value.address, flags = Value.flags}
 end
 if Value.value == 6 then
 C6[#C6+1] = {address = Value.address, flags = Value.flags}
@@ -211,211 +221,465 @@ end
 end
 gg.clearResults(gg.getResultsCount())
 gg.clearResults(nil)
-
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 8D E5 08 60 8D E5 82 00 8D E8 10 17 02 E3 3C FF 2F E1",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 8D E5 08 60 8D E5 82 00 8D E8 10 17 02 E3 00 F0 20 E3",     gg.TYPE_BYTE)
-gg.clearResults()
-
-gg.toast("𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎✔️")    
+gg.toast("Carga Completada ✔️")
 gg.sleep(1000)
 gg.setVisible(true)
 
 function START()
 gg.clearResults(gg.getResultsCount())
 menu = gg.multiChoice({
-"🔵 𝐅𝐔𝐍𝐂𝐈𝐎𝐍𝐄𝐒 𝐃𝐄𝐋 𝐒𝐂𝐑𝐈𝐏𝐓",       
-"✖ 𝐬𝐚𝐥𝐢𝐫 ✖"},nil,[[✪ 𝐒𝐂𝐑𝐈𝐏𝐓-𝐕𝐈𝐏 | 𝐅𝐅-1.106 ✪]])
+"🔵 OPCIONES CUENTA PRINCIPAL",
+"🔴 OPCIONES CUENTA SEGUNDARÍA", 
+"✖ salir ✖"},nil,[[✪ JMC-VIP | FFx64bit v1.108 ✪]])
 if menu == nil then else
 if menu [1] ==true then menusafe() end
-if menu [2] ==true then exit() end
+if menu [2] ==true then menurisk() end
+if menu [3] ==true then exit() end
 end
 XGCK= -1
 end
 
 function menusafe()
 menus = gg.multiChoice({
-"📶 𝐀𝐍𝐓𝐄𝐍𝐀 ",     
-"🔥 𝐑𝐄𝐆𝐄𝐃𝐈𝐓 ",      
-"📥𝑨𝑴𝑷𝑳𝑰𝑨𝑹 𝑪𝑨𝑹𝑮𝑨𝑫𝑶𝑹",    
-"➖𝑵𝑶 𝑹𝑬𝑪𝑶𝑰𝑳",    
-"🎯𝐀𝐈𝐌𝐁𝐎𝐓 𝐀𝐖𝐌 (test)",     
-"◀ 𝐀𝐭𝐫𝐚𝐬"},nil,"✨️ 𝐒𝐂𝐑𝐈𝐏𝐓 𝐕𝐈𝐏 ✨️")    
+"📶 ANTENAS",
+"🏥 CURAR RÁPIDO",
+"🔥 REGEDITS",
+"🔴 AYUDA APUNTADO",
+"🐼 BLANCO & NEGRO",
+"➖ SIN RETROCESO ",
+"📥 MAS CARGADOR",
+"◀ Atrás"},nil,"🔵 ACTIVA CON CONFIANZA")
 if menus == nil then else
-if menus [1] ==true then antenas() end
+if menus [1] ==true then antena() end
 if menus [2] ==true then reg() end
-if menus [3] ==true then ampliar() end
-if menus [4] ==true then lago() end
-if menus [5] ==true then awm() end
-if menus [6] ==true then START() end
+if menus [3] ==true then aim() end
+if menus [4] ==true then blayne() end
+if menus [5] ==true then rec() end
+if menus [6] ==true then carga() end
+if menus [7] ==true then START() end
 end
 XGCK= -1
 end
 
-function antenas()
-menua = gg.multiChoice({
-"📡 𝐀𝐍𝐓𝐄𝐍𝐀 𝐂𝐔𝐄𝐑𝐏𝐎",    
-"◀ 𝐀𝐭𝐫𝐚́𝐬"},nil,"▶ 𝐄𝐋𝐈𝐉𝐄 𝐓𝐔 𝐀𝐍𝐓𝐄𝐍𝐀 𝐅𝐀𝐕𝐎𝐑𝐈𝐓𝐀:")    
-if menua == nil then else
-if menua [1] ==true then antena11() end
-end
-XGCK= -1
-end
 
-function antena11()
+function antena()
 gg.setRanges(gg.REGION_ANONYMOUS)
-gg.searchNumber("QDB0A72BE1CFC2FB500000000",     1)
-gg.refineNumber("Q00000000",     1)
+gg.searchNumber("QDB0A72BE1CFC2FB500000000", 1)
+gg.refineNumber("Q00000000", 1)
 gg.getResults(gg.getResultsCount())
-gg.editAll("Q33F39543",     1)
+gg.editAll("Q33F39543", 1)
 gg.clearResults(gg.getResultsCount())
-gg.searchNumber("QF36D9BBE2B0562B500000000",     1)
-gg.refineNumber("Q00000000",     1)
+gg.searchNumber("QF36D9BBE2B0562B500000000", 1)
+gg.refineNumber("Q00000000", 1)
 gg.getResults(gg.getResultsCount())
-gg.editAll("Q33F39543",     1)
+gg.editAll("Q33F39543", 1)
 gg.clearResults(gg.getResultsCount())
-gg.toast("𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎 📡")    
+gg.toast("ACTIVADO 📡")
 end
 
 
 function reg()
 menureg = gg.choice({
-"🔥  𝐕𝐄𝐑𝐒𝐈𝐎𝐍 #1",     
-"◀ 𝐀𝐭𝐫𝐚́𝐬"},nil,"▶ 𝐄𝐋𝐈𝐉𝐄 𝐓𝐔 𝐑𝐄𝐆𝐄𝐃𝐈𝐓 𝐅𝐀𝐕𝐎𝐑𝐈𝐓𝐎:")    
+"🔥 VERSIÓN #1",
+"🔥 VERSIÓN #2",
+"🔥 VERSIÓN #3",
+"🔥 VERSIÓN #4",
+"◀ Atrás"},nil,"▶ ELIJE TU REGEDIT FAVORITO:")
 if menureg == 1 then v1() end
-if menureg == 6 then menusafe() end
+if menureg == 2 then v2() end
+if menureg == 3 then v3() end
+if menureg == 4 then v4() end
+if menureg == 5 then menusafe() end
 XGCK= -1
 end
 
 function v1()
 gg.setRanges(gg.REGION_ANONYMOUS)
-gg.searchNumber("15.0;35.0;10.0;20.0::13",     16)
+gg.searchNumber("15.0;35.0;10.0;20.0::13", 16)
 gg.getResults(gg.getResultsCount())
-gg.editAll("25;45;60;80",     16)
+gg.editAll("20;40;35;45", 16)
 gg.clearResults(gg.getResultsCount())
-gg.toast("𝐀𝐂𝐓𝐈𝐕𝐀𝐃𝐎 🔥")    
+gg.toast("ACTIVADO 🔥")
 end
 
-function ampliar()
+function v2()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("15.0;35.0;10.0;20.0::13", 16)
+gg.getResults(gg.getResultsCount())
+gg.editAll("30;50;40;60", 16)
+gg.clearResults(gg.getResultsCount())
+gg.toast("ACTIVADO 🔥")
+end
+
+function v3()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("15.0;35.0;10.0;20.0::13", 16)
+gg.getResults(gg.getResultsCount())
+gg.editAll("25;45;60;80", 16)
+gg.clearResults(gg.getResultsCount())
+gg.toast("ACTIVADO 🔥")
+end
+
+function v4()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("15.0;35.0;10.0;20.0::13", 16)
+gg.getResults(gg.getResultsCount())
+gg.editAll("20;40;55;50", 16)
+gg.clearResults(gg.getResultsCount())
+gg.toast("ACTIVADO 🔥")
+end
+
+function aim()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("3FACCCCD3FACCCCDh", gg.TYPE_QWORD)
+gg.getResults(gg.getResultsCount())
+gg.editAll("3FACCCCD42B3CCCDh", gg.TYPE_QWORD)
+gg.clearResults(gg.getResultsCount())
+gg.toast("ACTIVADO 🔴")
+end
+
+function blayne()
+gg.setRanges(gg.REGION_VIDEO)
+gg.searchNumber("1072216622", 4)
+gg.getResults(gg.getResultsCount())
+gg.editAll("1147786543", 4)
+gg.clearResults(gg.getResultsCount())
+gg.searchNumber("h 00 00 70 40 00 00 00 3F", 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll("h 00 00 70 40 66 66 48 42", 1)
+gg.clearResults(gg.getResultsCount())
+gg.toast("ACTIVADO 🐼")
+end
+
+function rec()
+gg.loadResults(Recoil)
+gg.getResults(gg.getResultsCount())
+gg.editAll("2", gg.TYPE_FLOAT) 
+gg.clearResults(true)
+gg.toast("ACTIVADO ➖")
+end
+
+function carga()
+gg.loadResults(C1)
+gg.getResults(gg.getResultsCount())
+gg.editAll("2", gg.TYPE_DWORD) -- 1 | M590
+gg.clearResults(false);
+gg.loadResults(C17)
+gg.getResults(gg.getResultsCount())
+gg.editAll("27", gg.TYPE_DWORD) -- 17 | USP, USP-2
+gg.clearResults(false);
 gg.loadResults(C30)
 gg.getResults(gg.getResultsCount())
-gg.editAll("50",     gg.TYPE_DWORD) -- 30
+gg.editAll("50", gg.TYPE_DWORD) -- 30
 gg.clearResults(true)
 gg.loadResults(C20)
 gg.getResults(gg.getResultsCount())
-gg.editAll("40",     gg.TYPE_DWORD) -- 20
+gg.editAll("40", gg.TYPE_DWORD) -- 20
 gg.clearResults(true)
 gg.loadResults(C7)
 gg.getResults(gg.getResultsCount())
-gg.editAll("10",     gg.TYPE_DWORD) -- 7
+gg.editAll("10", gg.TYPE_DWORD) -- 7
 gg.clearResults(true)
 gg.loadResults(C4)
 gg.getResults(gg.getResultsCount())
-gg.editAll("8",     gg.TYPE_DWORD) -- 4
+gg.editAll("8", gg.TYPE_DWORD) -- 4
 gg.clearResults(true)
 gg.loadResults(C5)
 gg.getResults(gg.getResultsCount())
-gg.editAll("10",     gg.TYPE_DWORD) -- 5
+gg.editAll("10", gg.TYPE_DWORD) -- 5
 gg.clearResults(true)
 gg.loadResults(C15)
 gg.getResults(gg.getResultsCount())
-gg.editAll("30",     gg.TYPE_DWORD) -- 15
-gg.clearResults(true)
-gg.loadResults(C12)
-gg.getResults(gg.getResultsCount())
-gg.editAll("22",     gg.TYPE_DWORD) -- 12
+gg.editAll("30", gg.TYPE_DWORD) -- 15
 gg.clearResults(true)
 gg.loadResults(C6)
 gg.getResults(gg.getResultsCount())
-gg.editAll("12",     gg.TYPE_DWORD) -- 6
+gg.editAll("12", gg.TYPE_DWORD) -- 6
 gg.clearResults(true)
 gg.loadResults(C2)
 gg.getResults(gg.getResultsCount())
-gg.editAll("4",     gg.TYPE_DWORD) -- 2
+gg.editAll("4", gg.TYPE_DWORD) -- 2
 gg.clearResults(true)
 gg.loadResults(C8)
 gg.getResults(gg.getResultsCount())
-gg.editAll("16",     gg.TYPE_DWORD) -- 8
+gg.editAll("16", gg.TYPE_DWORD) -- 8
 gg.clearResults(true)
 gg.loadResults(C3)
 gg.getResults(gg.getResultsCount())
-gg.editAll("6",     gg.TYPE_DWORD) -- 3
+gg.editAll("6", gg.TYPE_DWORD) -- 3
 gg.clearResults(true)
 gg.loadResults(C50)
 gg.getResults(gg.getResultsCount())
-gg.editAll("80",     gg.TYPE_DWORD) -- 50
+gg.editAll("80", gg.TYPE_DWORD) -- 50
 gg.clearResults(true)
 gg.loadResults(C42)
 gg.getResults(gg.getResultsCount())
-gg.editAll("62",     gg.TYPE_DWORD) -- 42
+gg.editAll("62", gg.TYPE_DWORD) -- 42
 gg.clearResults(true)
 gg.loadResults(C100)
 gg.getResults(gg.getResultsCount())
-gg.editAll("120",     gg.TYPE_DWORD) -- 100
+gg.editAll("120", gg.TYPE_DWORD) -- 100
 gg.clearResults(true)
 gg.loadResults(C10)
 gg.getResults(gg.getResultsCount())
-gg.editAll("20",     gg.TYPE_DWORD) -- 10
+gg.editAll("20", gg.TYPE_DWORD) -- 10
 gg.clearResults(true)
 gg.loadResults(C35)
 gg.getResults(gg.getResultsCount())
-gg.editAll("55",     gg.TYPE_DWORD) -- 35
+gg.editAll("55", gg.TYPE_DWORD) -- 35
 gg.clearResults(true)
 gg.loadResults(C22)
 gg.getResults(gg.getResultsCount())
-gg.editAll("42",     gg.TYPE_DWORD) -- 22
+gg.editAll("42", gg.TYPE_DWORD) -- 22
 gg.clearResults(true)
 gg.loadResults(C80)
 gg.getResults(gg.getResultsCount())
-gg.editAll("100",     gg.TYPE_DWORD) -- 80
+gg.editAll("100", gg.TYPE_DWORD) -- 80
 gg.clearResults(true)
 gg.loadResults(C60)
 gg.getResults(gg.getResultsCount())
-gg.editAll("80",     gg.TYPE_DWORD) -- 60
+gg.editAll("80", gg.TYPE_DWORD) -- 60
 gg.clearResults(true)
 gg.loadResults(C18)
 gg.getResults(gg.getResultsCount())
-gg.editAll("28",     gg.TYPE_DWORD) -- 18
+gg.editAll("28", gg.TYPE_DWORD) -- 18
 gg.clearResults(true)
 gg.loadResults(C25)
 gg.getResults(gg.getResultsCount())
-gg.editAll("45",     gg.TYPE_DWORD) -- 25
+gg.editAll("45", gg.TYPE_DWORD) -- 25
 gg.clearResults(true)
 gg.loadResults(C9)
 gg.getResults(gg.getResultsCount())
-gg.editAll("19",     gg.TYPE_DWORD) -- 9
+gg.editAll("19", gg.TYPE_DWORD) -- 9
 gg.clearResults(true)
 gg.loadResults(C16)
 gg.getResults(gg.getResultsCount())
-gg.editAll("26",     gg.TYPE_DWORD) -- 16
+gg.editAll("26", gg.TYPE_DWORD) -- 16
 gg.clearResults(true)
-gg.toast("ACTIVADO 📥")    
+gg.toast("ACTIVADO 📥")
 end
 
-function lago()
-gg.loadResults(Recoil)
+function menurisk()
+menur = gg.multiChoice({
+"🏪 MODO TIENDAS",
+"🎁 MODO AIRDROPS",
+"🔲 ATRAVESAR GLOO",
+"🚀 CORRER RÁPIDO",
+"💠 AYUDA MIRA",
+"👽 CABEZOTAS",
+"✨ BALAS MÁGICAS LITE",
+"💯 HEADSHOT",
+"🔺 ASISTENCIA AWM",
+"🔄 CAMBIO RÁPIDO AWM",
+"🚮 BORRAR INVITADO",
+"◀ Atrás"},nil,"🔴 ACTIVA BAJO TU RIESGO")
+if menur == nil then else
+if menur [1] == true then tienda() end
+if menur [2] == true then airdrop() end
+if menur [3] == true then gloo() end
+if menur [4] == true then correr() end
+if menur [5] == true then aimm() end
+if menur [6] == true then cbz() end
+if menur [7] == true then bmh1() end
+if menur [8] == true then hsmeta() end
+if menur [9] == true then awm() end
+if menur [10] == true then cambio() end
+if menur [11] == true then inv() end
+if menur [12] == true then START() end
+end
+XGCK= -1
+end
+
+function tienda()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber('Q "(" 00 00 "ingame/interactionobject/modelingameshop"')
 gg.getResults(gg.getResultsCount())
-gg.editAll("2",     gg.TYPE_FLOAT) 
+gg.editAll('Q 22 00 00 00 "ingame/sceneedit/sceneeditgroupbox"',1)
+gg.clearResults(gg.getResultsCount())
+gg.toast("ACTIVADO 🏪")
+end
+
+function airdrop()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber('Q "!" 00 00 "ingame/pickup/item/pickup_airdrop" 00 00 00', 1) -- 1
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 22 00 00 00 "ingame/sceneedit/sceneeditgroupbox"', 1)
+gg.clearResults()
+gg.searchNumber('Q "%" 00 00 "ingame/pickup/item/pickup_carepackage" 00 00 00', 1) -- 2
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 22 00 00 00 "ingame/sceneedit/sceneeditgroupbox"', 1)
+gg.clearResults()
+gg.searchNumber('Q "#" 00 00 "ingame/levelobject/levellockairdrop" 00 00 00', 1) -- 3
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 22 00 00 00 "ingame/sceneedit/sceneeditgroupbox"', 1)
+gg.clearResults()
+gg.searchNumber('Q 1E 00 00 00 "ingame/levelobject/techairdrop" 00 00 00 00 00 00 00 00 00 00', 1) -- 4
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 22 00 00 00 "ingame/sceneedit/sceneeditgroupbox"', 1)
+gg.clearResults()
+gg.toast("ACTIVADO 🎁")
+end
+
+function gloo()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber('Q "#" 00 00 "ingame/assistantitem/icewall_bunker" 00 00 00', gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 22 00 00 00 "effects/vfx_pet/vfx_petskill_robot"', gg.TYPE_BYTE)
+gg.clearResults()
+gg.toast("ACTIVADO 🔲")
+end
+
+function correr()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("2.80259693e-44F;1.20000004768F;0.18000000715F;1.40129846e-45F", 16)
+gg.refineNumber("1.20000004768", 16)
+gg.getResults(gg.getResultsCount())
+gg.editAll("2.2", 16)
+gg.clearResults(gg.getResultsCount())
+gg.toast("ACTIVADO 🚀")
+end
+
+function aimm()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("1075000115;1075000115::489", gg.TYPE_DWORD)
+gg.getResults(gg.getResultsCount())
+gg.editAll("-15", gg.TYPE_DWORD)
+gg.clearResults()
+gg.toast("ACTIVADO 💠")
+end
+
+function cbz()
+gg.setRanges(32)
+gg.searchNumber("h 62 00 6F 00 6E 00 65 00 5F 00 4C 00 65 00 66 00 74 00 5F 00 57 00 65 00 61 00 70 00 6F 00 6E 00", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll("h 62 00 6F 00 6E 00 65 00 5F 00 4E 00 65 00 63 00 6B 00", gg.TYPE_BYTE)
+gg.clearResults()
+gg.setRanges(32)
+gg.searchNumber("h 23 AA A6 B8 46 0A CD 70", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll("h 23 AA A6 B8 B2 F7 1F A4", gg.TYPE_BYTE)
+gg.clearResults()
+gg.setRanges(32)
+gg.searchNumber("h 57 27 13 BE C5 26 27 BC 1F 02 81 B3 D6 2D 8B 29 73 4E D6 34 CB 5F 13 BE BA 55 7D 3F 00 00 80 3F 00 00 80 3F 00 00 80 3F", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll("h EC 51 B8 BD 3B 64 29 BD 1F 02 81 B3 D6 2D 8B 29 73 4E D6 34 CB 5F 13 BE BA 55 7D 3F 72 1C C7 3F 72 1C C7 3F 72 1C C7 3F", gg.TYPE_BYTE)
+gg.clearResults()
+gg.setRanges(32)
+gg.searchNumber("h 7B D5 FE BD 6B F1 AE BC DA 65 8F B3 38 C2 15 2A 1F CD 04 35 42 A6 36 BE 0D E5 7B 3F 01 00 80 3F 01 00 80 3F 00 00 80 3F", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll("h EC 51 B8 BD 3B 64 29 BD DA 65 8F B3 38 C2 15 2A 1F CD 04 35 42 A6 36 BE 0D E5 7B 3F 00 00 C0 3F 00 00 C0 3F 00 00 C0 3F", gg.TYPE_BYTE)
+gg.clearResults()
+gg.toast("ACTIVADO 👽")
+end
+
+function bmh1()
+gg.setRanges(32)
+gg.searchNumber('Q 2C 00 00 00 "ingame/backweapon/backwp_bulletproofumbrella" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1E 00 00 00 "ingame/backweapon/backwp_eagle" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1C 00 00 00 "ingame/backweapon/backwp_g18" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1E 00 00 00 "ingame/backweapon/backwp_usp45" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1E 00 00 00 "ingame/backweapon/backwp_m1917" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1C 00 00 00 "ingame/backweapon/backwp_uzi" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1C 00 00 00 "ingame/backweapon/backwp_wsp" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1D 00 00 00 "ingame/backweapon/backwp_m500" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1C 00 00 00 "ingame/backweapon/backwp_pan" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1F 00 00 00 "ingame/backweapon/backwp_katana" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 20 00 00 00 "ingame/backweapon/backwp_machete" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q "!" 00 00 "ingame/backweapon/backwp_crossbow" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q "$" 00 00 "ingame/backweapon/backwp_baseballbat" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q "&" 00 00 "ingame/backweapon/backwp_superheat_gun" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.searchNumber('Q 1F 00 00 00 "ingame/backweapon/backwp_sickle" 00 00', 1)
+gg.getResults(gg.getResultsCount())
+gg.editAll('Q 15 00 00 00 "ingame/uav/uavpackage" 00 00', 1)
+gg.clearResults()
+gg.toast("ACTIVADO ✨")
+end
+
+function hsmeta()
+gg.setRanges(gg.REGION_C_ALLOC)
+gg.searchNumber(":bone_Neck", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll(":bone_Necs", gg.TYPE_BYTE)
 gg.clearResults(true)
-gg.toast("ACTIVADO ➖")    
+gg.searchNumber(":bone_Hips", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll(":bone_Neck", gg.TYPE_BYTE)
+gg.clearResults(true)
+NBM("libil2cpp.so", Female, "C0035FD6")
+gg.toast("ACTIVADO 💯")
 end
 
 function awm()
-gg.setRanges(gg.REGION_ANONYMOUS | gg.REGION_CODE_APP)
-gg.searchNumber("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01",     gg.TYPE_BYTE)
-gg.getResults(100)
-gg.editAll("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 FF FF 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01",     gg.TYPE_BYTE)
-gg.clearResults()
-gg.toast("Reemplazo realizado ᴏɴ✔️️")    
-end 
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 00 00 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll("h 8C 3F 8F C2 F5 3C CD CC CC 3D 06 00 00 00 00 00 FF FF 00 00 00 00 00 00 F0 41 00 00 48 42 00 00 00 3F 33 33 13 40 00 00 B0 3F 00 00 80 3F 01", gg.TYPE_BYTE)
+gg.clearResults(true)
+gg.toast("ACTIVADO 🔺")
+end
 
+function cambio()
+gg.setRanges(gg.REGION_ANONYMOUS)
+gg.searchNumber("h 00 00 00 00 3F 00 00 80 3E", gg.TYPE_BYTE)
+gg.getResults(gg.getResultsCount())
+gg.editAll("h 00 EC 51 B8 3D 8F C2 F5 3C", gg.TYPE_BYTE)
+gg.clearResults(true)
+gg.toast("ACTIVADO 🔄")
+end
 
+function inv()
+NBM("libil2cpp.so", Guest, "E0030032C0035FD6")
+gg.toast("ELIMINADA 🚮")
+end
 
 function exit()
-print("░░░░░░░░░░░░░░░")    
-print("░░SCRIPT░JMCVIP░░")   
-print("░░░░░░░░░░░░░░░")    
+gg.toast("Gracias por apoyar mis scipts JMCVIP")
+print("░░░░░░░░░░░░░░")
+print("░░SCRIPT░VIP░░░░")
+print("░░By░JMCASTRO░░")
+print("░░░░░░░░░░░░░░")
 os.exit()
 end
 
