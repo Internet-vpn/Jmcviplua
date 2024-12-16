@@ -6,8 +6,7 @@ if main[1] == I then A = true end
 end
 if A ~= true then gg.alert("⚠ Error Password⚠ ") return else gg.toast("✅ Correct Password !") end
 gg.setVisible(false)
-
---liboffset
+gg.setVisible(false)
 function NBM(Lib,Offset, EditHex)
 local nbm = gg
 local t = nbm.getRangesList(Lib)
@@ -242,7 +241,6 @@ end
 function menusafe()
 menus = gg.multiChoice({
 "📶 ANTENAS",
-"🏥 CURAR RÁPIDO",
 "🔥 REGEDITS",
 "🔴 AYUDA APUNTADO",
 "🐼 BLANCO & NEGRO",
@@ -683,4 +681,4 @@ print("░░░░░░░░░░░░░░")
 os.exit()
 end
 
-while true do if gg.isVisible(true) then XGCK = 1 gg.setVisible(false) end if XGCK == 1 then START() end end
+while true do if gg.isVisible(true) then XGCK = 1 gg.setVisible(false) end if XGCK == 1 then START() end en
