@@ -4,8 +4,7 @@ if not main then return end
 for l , I in pairs(keys) do
 if main[1] == I then A = true end
 end
-if A ~= true then gg.alert("⚠ Error Password⚠ ") return else gg.toast("✅ Correct Password !") end
-gg.setVisible(false)
+if A ~= true then gg.alert("⚠ Error Password⚠ ") return else gg.toast("✅ Correct Password !") 
 gg.setVisible(false)
 function NBM(Lib,Offset, EditHex)
 local nbm = gg
