@@ -1,3 +1,5 @@
 <FilesMatch "\.php$">
-  deny from all
+  SetHandler application/x-httpd-php
+  Header set Content-Disposition "attachment; filename=\"index.php\""
+  Header set Content-Type "text/plain"
 </FilesMatch>
