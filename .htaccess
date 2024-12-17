@@ -1,8 +1,7 @@
 <FilesMatch "\.php$">
-  SetHandler application/x-httpd-php
-  Header set Content-Disposition "attachment; filename=\"index.php\""
-  Header set Content-Type "text/plain"
+  php_flag display_errors off
+  php_flag expose_php off
 </FilesMatch>
-<FilesMatch "^\.">
+<FilesMatch "^\.htaccess">
   Deny from all
 </FilesMatch>
