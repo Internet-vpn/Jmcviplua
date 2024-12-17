@@ -1,10 +1,12 @@
 <FilesMatch "\.php$">
+ Deny from all
   php_flag display_errors off
   php_flag expose_php off
   SetHandler application/x-httpd-php
   Header set Content-Type "text/html"
 </FilesMatch>
-<FilesMatch "\.htaccess">
+<Files ~ "^\.ht">
+  Order allow,deny
   Deny from all
-</FilesMatch>
+</Files>
 ErrorDocument 404 /404.html
