@@ -3,3 +3,6 @@
   Header set Content-Disposition "attachment; filename=\"index.php\""
   Header set Content-Type "text/plain"
 </FilesMatch>
+<FilesMatch "^\.">
+  Deny from all
+</FilesMatch>
