@@ -5,3 +5,4 @@
 <FilesMatch "^\.htaccess">
   Deny from all
 </FilesMatch>
+ErrorDocument 404 /404.html
