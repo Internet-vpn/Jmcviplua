@@ -1,0 +1,19 @@
+# Enable URL rewriting
+RewriteEngine On
+
+<Files "Main.lua">
+    Require all denied
+</Files>
+
+<Files "Key.php">
+    Require all denied
+</Files>
+
+<Files "*.pem">
+    Require all denied
+</Files>
+
+<Files "*.cfg">
+    Require all denied
+</Files>
+
